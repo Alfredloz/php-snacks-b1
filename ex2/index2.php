@@ -8,7 +8,7 @@ Se tutto è ok stampare “Accesso riuscito”, altrimenti “Accesso negato” 
 <?php 
     $name = $_GET["name"];
     $mail = $_GET["mail"];
-    $age = ["age"];
+    $age = $_GET["age"];
     $at = strpos($mail, "@");
     $dot = strpos($mail. ".");
 
@@ -33,12 +33,21 @@ Se tutto è ok stampare “Accesso riuscito”, altrimenti “Accesso negato” 
    ?>
    </p>
    <p>
-   <?php if (strpos($mail, '@') === false && strpos($mail, '.') === false) {
+   <?php if (strpos($mail, '@') === false || strpos($mail, '.') === false) {
        echo 'Non è una mail valida!';
    }else{
        echo $mail;
    };
     ?>
     </p>
+    <p>Età:</p>
+    <p>
+    <?php 
+        if (is_int($age)) {
+            echo 'non è un numero!';
+        } else {
+            echo $age;
+        };
+     ?></p>
 </body>
 </html>
